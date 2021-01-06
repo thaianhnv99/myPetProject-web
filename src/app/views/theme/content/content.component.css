@@ -1,0 +1,7 @@
+.pet-ad{
+  background: #fff;
+  padding: 50px 35px 35px 35px;
+  box-shadow: 1px 2px 20px rgba(105,105,105,.35);
+  border: 0;
+  z-index: 2;
+}

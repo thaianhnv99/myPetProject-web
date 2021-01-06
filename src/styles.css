@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+.hero-content{
+  width: 42%;
+}
+
+.hero-content h1{
+  color: #f5ffcc !important;
+}
+
+.jumbotron {
+  background: url(https://www.hanoipetadoption.com/Images/jumbotron.jpg);
+  text-align: left;
+  margin-bottom: 0;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+.jumbotron::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: -moz-linear-gradient(left,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(left,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to right,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000',endColorstr='#00000000',GradientType=1);
+  z-index: 0;
+  position: absolute;
+  top: 0;
+}
+
+[data-aos^=fade][data-aos^=fade].aos-animate {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.jumbo-heading h1 {
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.breadcrumb-item.active {
+  color: #00ff74;
+}
+
+.adopt-card li {
+  border-bottom: 1px dashed #cecece;
+  padding: 5px 0;
+  color: #222;
+}
+
+.product-description{
+
+}
