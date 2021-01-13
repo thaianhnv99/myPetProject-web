@@ -12,10 +12,14 @@ import {ToastrModule} from "ngx-toastr";
 import {HeaderComponent} from './views/theme/header/header.component';
 import {FooterComponent} from './views/theme/footer/footer.component';
 import {ContentComponent} from './views/theme/content/content.component';
-import { AsideComponent } from './views/theme/aside/aside.component';
-import { AboutComponent } from './views/pages/about/about.component';
+import {AsideComponent} from './views/theme/aside/aside.component';
+import {AboutComponent} from './views/pages/about/about.component';
 import {IvyCarouselModule} from "./core/common/component/carousel/carousel.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {PagesModule} from "./views/pages/pages.module";
+import {CoreModule} from "./core/core.module";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -27,8 +31,10 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     AboutComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    CoreModule,
     FontAwesomeModule,
     HttpClientModule,
     AppRoutingModule,
@@ -45,9 +51,11 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
       preventDuplicates: true
     }),
     IvyCarouselModule,
+    PagesModule,
   ],
   providers: [
-    NgxSpinnerService
+    NgxSpinnerService,
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })

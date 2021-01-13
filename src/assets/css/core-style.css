@@ -483,7 +483,7 @@ img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 90px;
   flex: 0 0 90px;
-  width: 90px;
+  /*width: 90px;*/
   display: block;
   text-align: center;
   border-left: 1px solid #ebebeb;

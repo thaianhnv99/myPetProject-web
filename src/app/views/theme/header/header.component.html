@@ -18,39 +18,39 @@
         <div class="classynav">
           <ul>
             <li><a routerLink="/home">Trang chủ</a></li>
-            <li><a routerLink="/adopt">Nhận nuôi</a></li>
-<!--            <li><a href="#">Shop</a>-->
-<!--              <div class="megamenu">-->
-<!--                <ul class="single-mega cn-col-4">-->
-<!--                  <li class="title">Women's Collection</li>-->
-<!--                  <li><a href="#">Dresses</a></li>-->
-<!--                  <li><a href="#">Blouses &amp; Shirts</a></li>-->
-<!--                  <li><a href="#">T-shirts</a></li>-->
-<!--                  <li><a href="#">Rompers</a></li>-->
-<!--                  <li><a href="#">Bras &amp; Panties</a></li>-->
-<!--                </ul>-->
-<!--                <ul class="single-mega cn-col-4">-->
-<!--                  <li class="title">Men's Collection</li>-->
-<!--                  <li><a href="#">T-Shirts</a></li>-->
-<!--                  <li><a href="#">Polo</a></li>-->
-<!--                  <li><a href="#">Shirts</a></li>-->
-<!--                  <li><a href="#">Jackets</a></li>-->
-<!--                  <li><a href="#">Trench</a></li>-->
-<!--                </ul>-->
-<!--                <ul class="single-mega cn-col-4">-->
-<!--                  <li class="title">Kid's Collection</li>-->
-<!--                  <li><a href="#">Dresses</a></li>-->
-<!--                  <li><a href="#">Shirts</a></li>-->
-<!--                  <li><a href="#">T-shirts</a></li>-->
-<!--                  <li><a href="#">Jackets</a></li>-->
-<!--                  <li><a href="#">Trench</a></li>-->
-<!--                </ul>-->
-<!--                <div class="single-mega cn-col-4">-->
-<!--                  <img src="assets/img/bg-img/bg-6.jpg" alt="">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </li>-->
-            <li><a href="#">Bài viết</a></li>
+            <li><a>Nhận nuôi</a></li>
+            <!--            <li><a href="#">Shop</a>-->
+            <!--              <div class="megamenu">-->
+            <!--                <ul class="single-mega cn-col-4">-->
+            <!--                  <li class="title">Women's Collection</li>-->
+            <!--                  <li><a href="#">Dresses</a></li>-->
+            <!--                  <li><a href="#">Blouses &amp; Shirts</a></li>-->
+            <!--                  <li><a href="#">T-shirts</a></li>-->
+            <!--                  <li><a href="#">Rompers</a></li>-->
+            <!--                  <li><a href="#">Bras &amp; Panties</a></li>-->
+            <!--                </ul>-->
+            <!--                <ul class="single-mega cn-col-4">-->
+            <!--                  <li class="title">Men's Collection</li>-->
+            <!--                  <li><a href="#">T-Shirts</a></li>-->
+            <!--                  <li><a href="#">Polo</a></li>-->
+            <!--                  <li><a href="#">Shirts</a></li>-->
+            <!--                  <li><a href="#">Jackets</a></li>-->
+            <!--                  <li><a href="#">Trench</a></li>-->
+            <!--                </ul>-->
+            <!--                <ul class="single-mega cn-col-4">-->
+            <!--                  <li class="title">Kid's Collection</li>-->
+            <!--                  <li><a href="#">Dresses</a></li>-->
+            <!--                  <li><a href="#">Shirts</a></li>-->
+            <!--                  <li><a href="#">T-shirts</a></li>-->
+            <!--                  <li><a href="#">Jackets</a></li>-->
+            <!--                  <li><a href="#">Trench</a></li>-->
+            <!--                </ul>-->
+            <!--                <div class="single-mega cn-col-4">-->
+            <!--                  <img src="assets/img/bg-img/bg-6.jpg" alt="">-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </li>-->
+            <li><a routerLink="/pages/pets-post">Bài viết</a></li>
             <li><a href="#">Liên hệ</a></li>
           </ul>
         </div>
@@ -62,17 +62,30 @@
       <!-- Search Area -->
       <div class="search-area">
         <form ngNoForm method="post">
-          <input type="search" name="search" id="headerSearch" placeholder="...Tìm kiếm" />
+          <input type="search" name="search" id="headerSearch" placeholder="...Tìm kiếm"/>
           <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
       </div>
-      <!-- Favourite Area -->
-      <div class="favourite-area">
-        <a href="#"><img src="assets/img/core-img/heart.svg" alt=""></a>
-      </div>
       <!-- User Login Info -->
       <div class="user-login-info">
-        <a href="#"><img src="assets/img/core-img/user.svg" alt=""></a>
+        <div class="classynav">
+          <ul>
+            <li class="has-dropdown">
+              <a href="#"><img src="assets/img/core-img/user.svg" alt=""></a>
+              <ul class="dropdown">
+                <span *ngIf="checkUser()">
+                  <li><a href="#">Thông tin tài khoản</a></li>
+                  <li><a routerLink="/info-adopt-user">Thông tin nhận nuôi</a></li>
+                  <li><a (click)="logout()">Đăng xuất</a></li>
+                </span>
+                <span *ngIf="!checkUser()">
+                  <li><a (click)="login()">Đăng nhập</a></li>
+                <li><a href="#">Đăng ký</a></li>
+                </span>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

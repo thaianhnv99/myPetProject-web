@@ -1,23 +1,30 @@
-<div id="myModal" class="modal fade">
-  <div class="modal-dialog modal-login">
+  <div class="modal-login">
     <div class="modal-content">
       <div class="modal-header">
         <div class="avatar">
-          <img src="/assets/image/dog.png" alt="Avatar">
+          <img src="/assets/img/product-img/p1.jpg" alt="Avatar">
         </div>
-        <h4 class="modal-title">Member Login</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">ĐĂNG NHẬP</h4>
+        <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+                (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form method="post">
           <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+            <input type="email" id="inputEmail" [(ngModel)]="user.username" class="form-control"
+                   placeholder="Email address"
+                   required autofocus [ngModelOptions]="{standalone: true}">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input type="password" id="inputPassword" [(ngModel)]="user.password" class="form-control"
+                   placeholder="Password"
+                   required
+                   [ngModelOptions]="{standalone: true}">
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+            <button type="button" [disabled]="!user.username || !user.password" (click)="submit()" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
           </div>
         </form>
       </div>
@@ -29,4 +36,3 @@
       </div>
     </div>
   </div>
-</div>

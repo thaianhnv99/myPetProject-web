@@ -1,0 +1,58 @@
+<div class="jumbotron jumbotron-fluid skrollable skrollable-between" data-center="background-size: 100%;"
+     data-top-bottom="background-size: 110%;" style="background-size: 105.055%;padding-top: 8%;margin-bottom: 0">
+  <div class="container">
+    <div class="jumbo-heading aos-init aos-animate" data-aos="fade-up">
+      <h1>Thông tin nhận nuôi</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color: white;">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a style="color: white;">Thông tin nhận nuôi bé</a></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+<section class="container">
+  <div class="row">
+    <div class="col-12 page-with-sidebar aos-init aos-animate" data-aos="zoom-in">
+      <div class="row">
+        <div class="col-lg-12 mt-4 aos-init aos-animate" data-aos="fade-up">
+          <div class="">
+            <h3 class="pt-2 text-capitalize">Thông tin nhận</h3>
+            <hr class="small-divider left mb-2">
+            <div *ngIf="listPet.length">
+              <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Mã đơn nhận</th>
+                  <th scope="col">Mã vật nuôi</th>
+                  <th scope="col">Ngày gửi đơn</th>
+                  <th scope="col">Ngày giao</th>
+                  <th scope="col">Trạng thái</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of listPet, let i = index">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{item.orderId}}</td>
+                  <td>{{item.userId}}</td>
+                  <td>{{item.sentDate}}</td>
+                  <td>{{item.deliveryDate}}</td>
+                  <td>{{item.status == 0 ? 'Chưa duyệt' : 'Đã duyệt'}}</td>
+                  <td>
+                    <button type="button" class="btn btn btn-outline-danger"
+                            (click)="removeItem(item)">Xóa
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {PetsService} from "../service/pets.service";
 
 @Component({
   selector: 'app-content',
@@ -7,40 +8,38 @@ import {Router} from "@angular/router";
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-
-  images2 = [
-    {
-      id: '1',
-      path: '/assets/img/product-img/p1.jpg',
-    },
-    {
-      id: '2',
-      path: '/assets/img/product-img/p1.jpg',
-    },
-    {
-      id: '3',
-      path: '/assets/img/product-img/p1.jpg',
-    },
-    {
-      id: '4',
-      path: '/assets/img/product-img/p1.jpg',
-    },
-    {
-      id: '5',
-      path: '/assets/img/product-img/p1.jpg',
-    }
-  ];
+  listPets: any[] = [];
 
   constructor(
-    private route: Router
+    private route: Router,
+    private petsService: PetsService
   ) {
   }
 
   ngOnInit(): void {
+    this.petsList();
+  }
+
+  petsList() {
+    let body = {
+      page: 1,
+      pageSize: 10
+    }
+    this.petsService.getAllPet(body).subscribe(res => {
+      console.log(res);
+      if (res.body.data.length) {
+        res.body.data.forEach(item => {
+          item['path'] = item.picture;
+        })
+        this.listPets = res.body.data;
+        console.log(this.listPets);
+      }
+    });
   }
 
   selectChange(ev: any) {
     console.log(ev);
+    this.petsService.setItemPet(ev);
     this.route.navigate(['/pages/pets-detail']);
   }
 

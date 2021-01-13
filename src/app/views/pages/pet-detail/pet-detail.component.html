@@ -1,5 +1,5 @@
 <div class="jumbotron jumbotron-fluid skrollable skrollable-between" data-center="background-size: 100%;"
-     data-top-bottom="background-size: 110%;" style="background-size: 105.055%;">
+     data-top-bottom="background-size: 110%;" style="background-size: 105.055%;padding-top: 8%;">
   <div class="container">
     <div class="jumbo-heading aos-init aos-animate" data-aos="fade-up">
       <h1>Thông tin từng Boss</h1>
@@ -7,7 +7,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a style="color: white;">Trang chủ</a></li>
           <li class="breadcrumb-item"><a style="color: white;">Tất cả các bé</a></li>
-          <li class="breadcrumb-item active" aria-current="page"> Choco</li>
+          <li class="breadcrumb-item active" aria-current="page"> {{petItem ? petItem.petName : ''}}</li>
         </ol>
       </nav>
     </div>
@@ -20,20 +20,19 @@
         <div class="adopt-card col-lg-12 p-0 m-0">
           <div class="col-sm-5 col-md-5 col-lg-5 float-left avatar-animal">
             <img
-              data-src="https://www.hanoipetadoption.com/admin/user-content/Animal/5215b8fa-6341-40e7-a40b-a09cbb51f020.jpg"
               class="img-fluid rounded img-lazy-load w-100" alt="Choco"
-              src="https://www.hanoipetadoption.com/admin/user-content/Animal/5215b8fa-6341-40e7-a40b-a09cbb51f020.jpg">
+              [src]="petItem ? petItem.path: null">
           </div>
           <div class="col-sm-7 col-md-7 col-lg-7 caption-adoption float-right">
-            <h2 class="text-capitalize mt-3 mb-2">choco</h2>
+            <h2 class="text-capitalize mt-3 mb-2">{{petItem ? petItem.petName : ''}}</h2>
 
             <ul class="list-unstyled adopt-card p-0 m-0">
-              <li><strong>Giống:</strong> Mèo ta</li>
-              <li><strong>Màu sắc:</strong> Đen Trắng</li>
-              <li><strong>Tuổi:</strong> &lt; 6 tháng</li>
-              <li><strong>Cân nặng:</strong> 0.3</li>
-              <li><strong>Giới tính:</strong> Chưa rõ</li>
-              <li><strong>Mã:</strong> C2615</li>
+              <li><strong>Giống:</strong> {{petItem ? petItem.genusName : 'Chưa rõ'}}</li>
+              <li><strong>Màu sắc:</strong> {{petItem ? petItem.color : 'Chưa rõ'}}</li>
+              <li><strong>Tuổi:</strong> &lt; {{petItem ? petItem.age : 'Chưa rõ'}}</li>
+              <li><strong>Cân nặng:</strong> {{petItem ? petItem.weight : 'Chưa rõ'}}</li>
+              <li><strong>Giới tính:</strong> {{petItem ? petItem.gender : 'Chưa rõ'}}</li>
+              <li><strong>Mã:</strong> {{petItem ? petItem.petId : 'Chưa rõ'}}</li>
             </ul>
 
             <div class="fb-like d-block mt-3 fb_iframe_widget"
@@ -55,7 +54,8 @@
                                                                                         class=""></iframe></span></div>
 
             <div class="mt-4 btn-animal-detail">
-              <button type="button" class="btn btn-secondary" (click)="adopt()" style="margin-right: 10px;">Nhận nuôi</button>
+              <button type="button" class="btn btn-secondary" (click)="adopt()" style="margin-right: 10px;">Nhận nuôi
+              </button>
               <button type="button" class="btn btn-primary">Bạn có câu hỏi?</button>
             </div>
           </div>
@@ -69,7 +69,9 @@
               <div class="col-12 col-md-4 mb-2 mb-md-0">
                 <div class="row">
                   <div class="col-1 w-100 h-100 text-center">
-                    <i class="status-info text-danger fa fa-times-circle"></i>
+                    <i *ngIf="petItem.sterilization === null" class="status-info text-warning fa fa-question-circle"></i>
+                    <i *ngIf="petItem.sterilization === 1" class="status-info text-success fa fa-check-circle"></i>
+                    <i *ngIf="petItem.sterilization === 0" class="status-info text-danger fa fa-times-circle"></i>
                   </div>
                   <span class="col-10 pl-2">Triệt sản</span>
                 </div>
@@ -95,9 +97,11 @@
               <div class="col-12 col-md-4 mb-2 mb-md-0">
                 <div class="row">
                   <div class="col-1 w-100 h-100 text-center">
-                    <i class="status-info text-danger fa fa-times-circle"></i>
+                    <i *ngIf="petItem.vaccination === null" class="status-info text-warning fa fa-question-circle"></i>
+                    <i *ngIf="petItem.vaccination === 1" class="status-info text-success fa fa-check-circle"></i>
+                    <i *ngIf="petItem.vaccination === 0" class="status-info text-danger fa fa-times-circle"></i>
                   </div>
-                  <span class="col-10 pl-2">Tiêm dại</span>
+                  <span class="col-10 pl-2">Tiêm phòng bệnh</span>
                 </div>
               </div>
               <div class="col-12 col-md-4 mb-2 mb-md-0">
@@ -121,14 +125,6 @@
               <div class="col-12 col-md-4 mb-2 mb-md-0">
                 <div class="row">
                   <div class="col-1 w-100 h-100 text-center">
-                    <i class="status-info text-danger fa fa-times-circle"></i>
-                  </div>
-                  <span class="col-10 pl-2">Tiêm phòng bệnh</span>
-                </div>
-              </div>
-              <div class="col-12 col-md-4 mb-2 mb-md-0">
-                <div class="row">
-                  <div class="col-1 w-100 h-100 text-center">
                     <i class="status-info text-warning fa fa-question-circle"></i>
                   </div>
                   <span class="col-10 pl-2">Thân thiện với mèo</span>
@@ -142,7 +138,7 @@
           <div class="pt-4">
             <h3 class="text-capitalize">Tìm hiểu về thú cưng</h3>
             <hr class="small-divider left">
-            Một đôi bạn nhặt được bé lang thang vào đêm Giao thừa, do không nuôi được nên nhóm đón về chăm sóc.
+            {{petItem ? petItem.moreInformation : 'KHông có thông tin thêm'}}
           </div>
         </div>
 

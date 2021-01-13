@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  DATE_FORMAT: 'YYYY-MM-DDTHH:mm:ss.SSS',
+  isMockEnabled: true, // You have to switch this, when your real back-end is done
+  authTokenKey: 'token_auth',
+  authenticationUrl: 'http://localhost:8081/api/account/signin',
+  ApiUrl: 'http://localhost:8081/',
 };
 
 /*

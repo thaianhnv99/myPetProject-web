@@ -4,6 +4,7 @@ import {FormCheckOutComponent} from './views/pages/form-check-out/form-check-out
 import {ContentComponent} from "./views/theme/content/content.component";
 import {AboutComponent} from "./views/pages/about/about.component";
 import {CommonModule} from "@angular/common";
+import {InfoAdoptUserComponent} from "./views/pages/info-adopt-user/info-adopt-user.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
+  },
+  {
+    path: 'info-adopt-user',
+    component: InfoAdoptUserComponent,
   },
   {
     path: 'pages',

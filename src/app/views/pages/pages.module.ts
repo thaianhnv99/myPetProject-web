@@ -8,11 +8,23 @@ import {RouterModule} from "@angular/router";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {PetsComponent} from './pets/pets.component';
 import {PetPostComponent} from './pet-post/pet-post.component';
-import { PetFormAdoptComponent } from './pet-form-adopt/pet-form-adopt.component';
+import {PetFormAdoptComponent} from './pet-form-adopt/pet-form-adopt.component';
+import {LoginComponent} from "./login/login.component";
+import { InfoAdoptUserComponent } from './info-adopt-user/info-adopt-user.component';
 
 
 @NgModule({
-  declarations: [PetDetailComponent, PetsComponent, PetPostComponent, PetFormAdoptComponent],
+  declarations: [
+    PetDetailComponent,
+    PetsComponent,
+    PetPostComponent,
+    PetFormAdoptComponent,
+    LoginComponent,
+    InfoAdoptUserComponent
+  ],
+  exports: [
+    LoginComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild([

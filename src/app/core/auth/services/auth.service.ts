@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {environment as env} from '../../../../environments/environment';
+import {environment, environment as env} from '../../../../environments/environment';
+import {USER_PROFILE} from "../../utils/constant";
 
 
 @Injectable()
@@ -22,7 +23,7 @@ export class AuthService {
   }
 
   private clearToken() {
-
+    localStorage.removeItem(environment.authTokenKey);
   }
 
   /*

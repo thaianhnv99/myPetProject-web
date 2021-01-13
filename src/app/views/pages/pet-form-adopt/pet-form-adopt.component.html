@@ -2,27 +2,51 @@
   <div class="card-header">
     <div class="card-title">
       <h5 class="card-label" style="float:left;">
-        Chọn loại thuế/Tờ khai cần thanh toán
+        Thông tin nhận nuôi PET
       </h5>
       <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
               (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <!--        <div class="card-toolbar">-->
-    <!--            <a href="#" class="btn btn-sm btn-light-primary font-weight-bold">-->
-    <!--                <i class="flaticon2-cube"></i> Settings-->
-    <!--            </a>-->
-    <!--        </div>-->
   </div>
   <div style="margin: 45px;text-align: center;">
-    <p>abc</p>
+    <form name="editForm" role="form" novalidate [formGroup]="inputForm" #form='ngForm'>
+      <div>
+        <div class="form-group row">
+          <label class="col-sm-2">Tên vật nuôi</label>
+          <div class="col-sm-4">
+            <label class="col-sm-4">{{petItem ? petItem.petName : ''}}</label>
+            <!--            <input [maxLength]="35"-->
+            <!--                   formControlName="templateName">-->
+          </div>
+          <label class="col-sm-2">Lý do</label>
+          <div class="col-sm-4">
+            <input [maxLength]="35"
+                   formControlName="reason">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2">Khai báo điều kiện</label>
+          <div class="col-sm-4">
+            <input [maxLength]="35"
+                   formControlName="conditions">
+          </div>
+          <label class="col-sm-2">Ngày gửi đơn</label>
+          <div class="col-sm-4">
+            <input [maxLength]="35"
+                   formControlName="sentDate">
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="card-footer justify-content-between text-right">
-    <button type="submit"
-            class="btn btn-danger btn-shadow mr-2">Chọn
+    <button type="submit" (click)="sentAdopt()"
+            [disabled]="inputForm.invalid"
+            class="btn btn-danger btn-shadow mr-2">Gửi
     </button>
-    <button type="button"
+    <button type="button" (click)="closed()"
             class="btn btn-danger btn-shadow mr-2">Đóng
     </button>
   </div>

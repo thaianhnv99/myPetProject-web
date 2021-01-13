@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {InputNumberDirective} from './directive/input-number.directive';
 import {IvyCarouselModule} from "./component/carousel/carousel.module";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {IvyCarouselModule} from "./component/carousel/carousel.module";
     InputNumberDirective
   ],
   exports: [
-    InputNumberDirective
+    InputNumberDirective,
+    ToastrModule
   ]
 })
 export class SharedModule {

@@ -1,6 +1,6 @@
 .modal-login {
   color: #636363;
-  width: 350px;
+  width: 100% !important;
 }
 .modal-login .modal-content {
   padding: 20px;
@@ -57,9 +57,6 @@
 }
 .modal-login .avatar img {
   width: 100%;
-}
-.modal-login.modal-dialog {
-  margin-top: 80px;
 }
 .modal-login .btn, .modal-login .btn:active {
   color: #fff;
